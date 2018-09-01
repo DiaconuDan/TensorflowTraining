@@ -10,8 +10,9 @@
 
         const model = tf.sequential();
         model.add(tf.layers.dense({ units: 50, activation: 'relu', inputShape: [10] }));
+        model.add(tf.layers.dropout({rate:0.3}) ) 
         model.add(tf.layers.dense({ units: 1, activation: 'linear' }))
-        model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' })
+        model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' , lr:0.2 })
 
         model.fit(xs, ys, {
             epochs: 100,
